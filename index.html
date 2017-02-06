@@ -1,44 +1,51 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html amp lang="ko">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no, address=no, email=no">
     <meta charset="utf-8">
     <title>매물 상세 페이지</title>
     <link rel="stylesheet" href="index.css">
+    <style>body {opacity: 0}</style>
+    <noscript>
+      <style>body {opacity: 1}</style>
+    </noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
 </head>
 <body>
     <div id="wrap">
         <header class="header">
-            <button class="pl">prev</button>
+            <button class="pl header-icon ic-back">prev</button>
             <h1>서울시 강남구 신사동</h1>
 
-            <button class="pr" >next</button>
+            <button class="pr header-icon ic-share">next</button>
             <button class="pr">next</button>
         </header>
         <div class="container">
             <div class="image-wrapper">
                 <div class="image-slider">
-                    <img src="product_test.jpg"/>
+                    <amp-img src="room-img.jpg" layout="responsive" width="36rem" height="36rem" alt="방 이미지"></amp-img>
                 </div>
                 <div class="room-manager-level">
-                    <span>안심중개사</span>가 등록한 방입니다.
-                    <button class="pr">asdf</button>
+                    <div >
+                        <span>안심중개사</span>가 등록한 방입니다.
+                        <button class="pr">asdf</button>
+                    </div>
                 </div>
             </div>
             <div class="content">
                 <section>
-                    <h1 class="room-title">신사동 헤론 쓰리룸</h1>
+                    <h2 class="room-title main-title">신사동 헤론 쓰리룸</h2>
                     <div class="room-info">
                         <table>
                             <colgroup>
-                                <col style="width:3rem;" />
+                                <col style="width:10.5rem;" />
                                 <col style="width:auto;" />
                             </colgroup>
                             <tbody>
                             <tr>
                                 <th>보증금</th>
-                                <td>10000만원</td>
+                                <td><span class="point">10000</span> 만원</td>
                             </tr>
                             <tr>
                                 <th>보증금</th>
@@ -61,47 +68,52 @@
                     </div>
                 </section>
                 <section>
-                    <h1 class="room-title">신사동 헤론 쓰리룸</h1>
+                    <h2 class="room-title">상세설명</h2>
                     <div class="room-info">
-                       <
+                        거실과 방이 크게 나온 신사동 3룸입니다 ^^
+                        남향집이고 해가 너무 잘들고 근처 건물들에 비해서 집이 깨끗하고 뷰도 좋은 편 입니다.
+                        가격은 집주인분과 상의 후에 조정 가능합니다.
+                        깔끔하고 좋은 집 보러 연락해주세요!
                     </div>
                 </section>
                 <section>
-                    <h1 class="room-title">신사동 헤론 쓰리룸</h1>
+                    <h2 class="room-title">담당자 한마디</h2>
                     <div class="room-info">
-                        <table>
-                            <colgroup>
-                                <col style="width:3rem;" />
-                                <col style="width:auto;" />
-                            </colgroup>
-                            <tbody>
-                            <tr>
-                                <th>보증금</th>
-                                <td>10000만원</td>
-                            </tr>
-                            <tr>
-                                <th>보증금</th>
-                                <td>10000만원</td>
-                            </tr>
-                            <tr>
-                                <th>보증금</th>
-                                <td>10000만원</td>
-                            </tr>
-                            <tr>
-                                <th>보증금</th>
-                                <td>10000만원</td>
-                            </tr>
-                            <tr>
-                                <th>보증금</th>
-                                <td>10000만원</td>
-                            </tr>
-                            </tbody>
-                        </table>
+                        공휴일 및 주말에도 언제든지 상담 가능<br />
+                        차량 픽업 서비스 가능<br />
+                        조건에 맞는 집 답사<br />
+                        상담부터 게약까지 고객 맞춤형 서비스
                     </div>
                 </section>
 
+                <section>
+                    <h2 class="room-title">건물정보</h2>
+                    <div class="room-info clear-fix">
+                        <div style="float: left">
+                            <img src="building-image.jpg" style="width:12rem;height:12rem" alt="건물 이미지">
+                        </div>
+                        <div style="float: left">
+                            <div>
+                                <p>고려 아카데미 텔</p>
+                                <p>서울시 마포구 아현동 437-3</p>
+                            </div>
+                            <div>
+                                <p>17층</p>
+                                <p>675세대</p>
+                                <p>1987.11</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
     </div>
+    <p>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer">
+            <img style="border:0;width:88px;height:31px"
+                src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+                alt="올바른 CSS입니다!" />
+            </a>
+        </p>
 </body>
 </html>
