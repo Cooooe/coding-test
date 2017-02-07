@@ -17,20 +17,22 @@
         <header class="header">
             <button class="pl header-icon ic-back">prev</button>
             <h1>서울시 강남구 신사동</h1>
-
-            <button class="pr header-icon ic-share">next</button>
-            <button class="pr">next</button>
+            <button class="pr header-icon ic-like on">like</button>
+            <button class="pr header-icon ic-share">share</button>
         </header>
         <div class="container">
             <div class="image-wrapper">
                 <div class="image-slider">
-                    <amp-img src="./img/room-img.jpg" layout="responsive" width="36rem" height="36rem" alt="방 이미지"></amp-img>
+                    <amp-img src="./img/room-img.jpg" layout="responsive" width="100" height="100" alt="방 이미지"></amp-img>
                 </div>
                 <div class="room-manager-level">
-                    <div >
-                        <span>안심중개사</span>가 등록한 방입니다.
-                        <button class="pr">asdf</button>
-                    </div>
+                    <span class="sp-box">
+                        <span class="truth-agency">안심중개사</span>
+                        <span>
+                            가 등록한 방입니다.
+                        </span>
+                    </span>
+                    <button class="pr ic-help">asdf</button>
                 </div>
             </div>
             <div class="content">
@@ -90,7 +92,7 @@
                     <h2 class="room-title">건물정보</h2>
                     <div class="room-info clear-fix building-info">
                         <div style="float: left" class="building-img">
-                            <amp-img src="./img/building-image.jpg" layout="responsive" style="width:12rem;height:12rem" alt="건물 이미지"></amp-img>
+                            <amp-img src="./img/building-image.jpg" layout="responsive" style="width:12rem;height:12rem" width="100" height="100" alt="건물 이미지"></amp-img>
                         </div>
                         <div style="float: left" class="building-desc">
                             <div>
@@ -129,7 +131,7 @@
                     <div class="room-info agency">
                         <div class="agency-manager-info clear-fix">
                             <div class="agency-image">
-                                <amp-img src="./img/room-img.jpg" layout="responsive" width="10rem" height="10rem"></amp-img>
+                                <amp-img src="./img/agency-profile.png" layout="responsive" width="10rem" height="10rem"></amp-img>
                                 <div class="agency-grade">
 
                                 </div>
@@ -141,12 +143,16 @@
                             </div>
                         </div>
                         <div class="agency-info">
-                            <h3>중개사무소 정보</h3>
+                            <h3 class="bold">중개사무소 정보</h3>
                             <ul>
                                 <li>서울시 마포구, 테리 부동산 (김테리)</li>
                                 <li>대표번호 : 1588-1688</li>
                             </ul>
                         </div>
+                    </div>
+                    <div class="room-info agency agency-desc">
+                        <p>이 방은 <span class="bold">공인중개사가 등록한 중개 매물</span>입니다.</p>
+                        <p>공인중개사를 통해 <span class="bold">안전하게 계약</span>할 수 있으며, <span class="bold">법정 중개 보수가</span> 발생합니다.</p>
                     </div>
                 </section>
             </div>

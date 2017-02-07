@@ -46,3 +46,10 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+button, input, select, textarea{
+    border: 0 none;
+    outline: 0 none;
+    background-color:#fff;
+    padding:0;
+
+}

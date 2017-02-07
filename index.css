@@ -6,7 +6,7 @@
 }
 
 html{
-    font-size:10px;
+    font-size:62.5% !important
 }
 
 *{
@@ -28,7 +28,8 @@ button{
     line-height: 5.6rem;
     top:0;
     width:100%;
-    position:relative;
+    position:absolute;
+    z-index:100;
     color:white;
 }
 
@@ -36,11 +37,35 @@ button{
     clear:both;
 }
 
-.header>h1{font-size:1.9em;line-height:5.6rem;position:relative;display:inline-block;}
+.header>h1{font-size:1.9em;line-height:6rem;position:relative;float:left;}
 .header>.header-icon{
-    width:4.3rem;
-    height:3.4rem;
+    /*width:4.3rem;*/
+    height:100%;
+    text-indent: -9999px;
 }
+
+.header>.header-icon.ic-back{
+    background:url('./img/ic_back.png') no-repeat center center;
+    background-size:2.15rem;
+    min-width:4.3rem;
+}
+.header>.header-icon.ic-share{
+    background:url('./img/ic_share.png') no-repeat center center;
+    background-size:2.15rem;
+    min-width:4.5rem;
+    margin-right:1rem;
+}
+.header>.header-icon.ic-like{
+    background:url('./img/ic_like.png') no-repeat center center;
+    background-size:2.15rem;
+    min-width:4.5rem;
+    /*margin-right:1rem;*/
+}
+.header>.header-icon.ic-like.on{
+    background:url('./img/ic_like_select.png') no-repeat center center;
+    background-size:2.15rem;
+}
+
 
 .container{
     background:darkseagreen;
@@ -85,12 +110,37 @@ button{
 .room-manager-level {
     display:inline-block;
     width:100%;
-    line-height: 4.5rem;
     height:4.5rem;
     background:rgb(13,196,191);
     font-size:1.6rem;
-    padding-left:1rem;
+    /*padding-left:1rem;*/
     color:white;
+}
+
+.room-manager-level .truth-agency{
+    background:url('./img/truth-agency.png') no-repeat center center;
+    text-indent:-9999px;
+    background-size:9rem;
+    /*position:absolute;*/
+    margin:0 0.5rem 0 1.1rem;
+    height:100%;
+    width:9rem;
+    display:inline-block;
+}
+
+.room-manager-level .ic-help{
+    background:url('./img/ic_help.png') no-repeat center center;
+    background-size:2.4rem;
+    margin-right:0.9rem;
+    text-indent: -9999px;
+    width:2.4rem;
+    height:100%;
+}
+
+.sp-box{
+    display:inline-flex;
+    height:100%;
+    align-items:center;
 }
 
 .room-manager-level button{
@@ -189,17 +239,59 @@ button{
     margin-left:1.6rem;
 }
 
+.room-info .agency-manager-info>.agency-manager-desc p{
+    padding-bottom:0.8rem;
+}
 
 .room-info .agency-info {
-    padding-top:0.8rem;
+    /*padding-top:0.8rem;*/
+    font-size: 1.25rem;
+    line-height:1.25rem;
+}
+
+.room-info .agency-info h3{
+    border-bottom: 1px solid rgb(238, 238, 238);
+    padding:0.8rem 0 0.8rem 0;
+}
+
+.room-info .agency-info ul{
+    /*border-bottom: 1px solid rgb(238, 238, 238);*/
+    padding:0.8rem 0 0 0;
+}
+
+.room-info .agency-info ul > li{
+    /*border-bottom: 1px solid rgb(238, 238, 238);*/
+    line-height:1.25rem;
+    padding-bottom:0.5rem;
+    padding-left:1rem;
+    font-size: 1.25rem;
+    background:url('./img/bullet.png') no-repeat left 0.2rem;
+}
+.room-info .agency-info ul > li:last-of-type{
+    padding-bottom:0;
 }
 
 .room-info.map-viewer .map-button > button{
     width:50%;
     height:4rem;
     float:left;
+    font-size:1.7rem;
 }
 
+.room-info.agency.agency-desc{
+    background:rgb(132,132,132);
+    color:white;
+}
+.room-info.agency.agency-desc p{
+    /*padding-bottom: 0.8rem;*/
+    font-size:1.2rem;
+    line-height:1.8rem;
+
+}
+
+.room-info.agency.agency-desc p:last-child{
+    padding-bottom:0;
+}
 
 .bold{
     font-weight:bold;
@@ -209,7 +301,7 @@ button{
     /*position:absolute;*/
     top:0;
     height:100%;
-    width:3rem;
+    /*width:3rem;*/
 }
 
 
