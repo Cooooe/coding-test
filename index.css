@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: 'NotoSans'; /* 폰트 패밀리 이름 주기*/
-    src: url('NotoSansCJKkr-Medium.otf'); /*폰트 파일 주소*/
+    src: url('NotoSansCJKkr-Medium.otf') format('opentype'); /*폰트 파일 주소*/
 }
 
 html{
@@ -15,7 +15,7 @@ html{
 #wrap{
     width:100%;
     height:100%;
-    position:absolute;
+    /*position:absolute;*/
 }
 
 button{
@@ -28,7 +28,7 @@ button{
     line-height: 5.6rem;
     top:0;
     width:100%;
-    position:absolute;
+    position:fixed;
     z-index:100;
     color:white;
 }
@@ -94,9 +94,14 @@ button{
 
 }
 
+.content section:last-child{
+    padding-bottom:8rem;
+}
+
 .content section h2.main-title{
     color:black;
 }
+
 .image-slider{
     overflow: hidden;
     height:36rem;
@@ -158,6 +163,10 @@ button{
     border:1px solid #e1e1e1;
 }
 
+.room-info table{
+    width:100%;
+}
+
 .room-info table th{
     background: rgb(250, 250, 250);
     height:2rem;
@@ -169,7 +178,20 @@ button{
     padding:1rem;
 }
 
-.room-info table td>span.point{
+.room-info table tr.table-border{
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.btn-appraisal{
+    background:url('./img/btn-appraisal.png') no-repeat center center;
+    background-size:11.2rem;
+    text-indent: -9999px;
+    width:100%;
+    height:100%;
+    cursor: pointer;
+}
+
+span.point{
     font-size:1.7rem;
     color:rgb(254, 120, 0);
 }
@@ -193,6 +215,7 @@ button{
 
 .room-info .building-img {
     /*padding:1.25rem;*/
+    float:left;
 }
 
 .room-info .building-desc{
@@ -271,11 +294,30 @@ button{
     padding-bottom:0;
 }
 
+.room-info.map-viewer .map-button{
+    border-top:1px solid rgb(225,225,225);
+}
+
 .room-info.map-viewer .map-button > button{
     width:50%;
     height:4rem;
     float:left;
     font-size:1.7rem;
+}
+.room-info.map-viewer .map-button > button:first-child{
+    border-right:1px solid rgb(225,225,225);
+}
+
+.room-info.map-viewer .map-button > .btn-load-view{
+    background:url('./img/ic-loadview.png') no-repeat 3.5rem 0.5rem;
+    background-size:1.8rem;
+    padding-left:1.8rem;
+}
+
+.room-info.map-viewer .map-button > .btn-map-view{
+    background:url('./img/ic-mapview.png') no-repeat 4rem 1rem;
+    background-size:1.8rem;
+    padding-left:1.8rem;
 }
 
 .room-info.agency.agency-desc{
@@ -297,6 +339,60 @@ button{
     font-weight:bold;
 }
 
+#footer{
+    position: fixed;
+    bottom:0;
+    width:100%;
+    left:0;
+    height:8rem;
+    font-size:0;
+    background:white;
+    border-top: 2px solid rgb(213,213,213);
+}
+
+#footer>.footer-inner-wrap{
+    height:100%;
+    margin:0 1.6rem 0 1.6rem;
+}
+
+#footer .sub-agency-info, .call-btn-wrap{
+    font-size:1.6rem;
+    width:50%;
+    display:inline-block;
+    vertical-align: middle;
+    height:100%;
+}
+
+#footer .call-btn-wrap{
+    float:right;
+    width:16.25rem;
+}
+
+#footer .call-btn-wrap button{
+    background:url('./img/call-btn.png') no-repeat center center;
+    background-size:16rem;
+    width:100%;
+    height:100%;
+    text-indent: -9999px;
+}
+
+#footer .sub-agency-info{
+    display:inline-flex;
+    align-items: center;
+}
+#footer .sub-agency-info > ul > li{
+    padding:0.2rem 0 0.2rem 0;
+}
+#footer .sub-agency-info > ul > li:nth-of-type(1){
+    font-size:1.3rem;
+    color:rgb(149,149,149);
+}
+
+#footer .sub-agency-info > ul > li:nth-of-type(3){
+    font-size:1.3rem;
+    color:rgb(254, 120, 0);
+}
+
 .pl, .pr{
     /*position:absolute;*/
     top:0;
@@ -307,5 +403,9 @@ button{
 
 .pl { float:left; background: blue;}
 .pr{ float:right; background:yellowgreen; }
+sup{
+    vertical-align: super;
+    font-size:smaller;
+}
 
 

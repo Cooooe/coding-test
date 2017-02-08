@@ -17,7 +17,7 @@
         <header class="header">
             <button class="pl header-icon ic-back">prev</button>
             <h1>서울시 강남구 신사동</h1>
-            <button class="pr header-icon ic-like on">like</button>
+            <button class="pr header-icon ic-like">like</button>
             <button class="pr header-icon ic-share">share</button>
         </header>
         <div class="container">
@@ -32,7 +32,7 @@
                             가 등록한 방입니다.
                         </span>
                     </span>
-                    <button class="pr ic-help">asdf</button>
+                    <button class="pr ic-help">Help</button>
                 </div>
             </div>
             <div class="content">
@@ -43,28 +43,74 @@
                             <colgroup>
                                 <col style="width:10.5rem;" />
                                 <col style="width:auto;" />
+                                <col style="width:13rem;" />
                             </colgroup>
                             <tbody>
-                            <tr>
-                                <th>보증금</th>
-                                <td><span class="point">10000</span> 만원</td>
-                            </tr>
-                            <tr>
-                                <th>보증금</th>
-                                <td>10000만원</td>
-                            </tr>
-                            <tr>
-                                <th>보증금</th>
-                                <td>10000만원</td>
-                            </tr>
-                            <tr>
-                                <th>보증금</th>
-                                <td>10000만원</td>
-                            </tr>
-                            <tr>
-                                <th>보증금</th>
-                                <td>10000만원</td>
-                            </tr>
+                                <tr>
+                                    <th>보증금</th>
+                                    <td><span class="point">10000</span> 만원</td>
+                                    <td rowspan="2">
+                                        <button class="btn-appraisal">실거래가확인</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>월세</th>
+                                    <td>
+                                        <span class="point">100</span> 만원
+                                    </td>
+                                </tr>
+                                <tr class="table-border">
+                                    <th>등록번호</th>
+                                    <td colspan="2">123456</td>
+                                </tr>
+                                <tr>
+                                    <th>주소</th>
+                                    <td colspan="2">서울시 강남구 신사동</td>
+                                </tr>
+                                <tr>
+                                    <th>인근전철역</th>
+                                    <td colspan="2">신사역 (3호선) 압구정역 (7호선)</td>
+                                </tr>
+                                <tr>
+                                    <th>건물층수</th>
+                                    <td colspan="2">3층/4층</td>
+                                </tr>
+                                <tr>
+                                    <th>크기</th>
+                                    <td colspan="2">전용면적 60.10m<sup>2</sup> 18.18P</td>
+                                </tr>
+                                <tr>
+                                    <th>구조</th>
+                                    <td colspan="2">쓰리룸+</td>
+                                </tr>
+                                <tr class="table-border">
+                                    <th>건물형태</th>
+                                    <td colspan="2">다세대/다가구</td>
+                                </tr>
+                                <tr>
+                                    <th>옵션</th>
+                                    <td colspan="2">옷장</td>
+                                </tr>
+                                <tr>
+                                    <th>관리비</th>
+                                    <td colspan="2">없음</td>
+                                </tr>
+                                <tr>
+                                    <th>관리비 포함항목</th>
+                                    <td colspan="2">수도</td>
+                                </tr>
+                                <tr>
+                                    <th>주차</th>
+                                    <td colspan="2">불가능</td>
+                                </tr>
+                                <tr>
+                                    <th>엘레베이터</th>
+                                    <td colspan="2">없음</td>
+                                </tr>
+                                <tr>
+                                    <th>입주가능일</th>
+                                    <td colspan="2">4월 21일 이후</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -91,18 +137,18 @@
                 <section>
                     <h2 class="room-title">건물정보</h2>
                     <div class="room-info clear-fix building-info">
-                        <div style="float: left" class="building-img">
+                        <div class="building-img">
                             <amp-img src="./img/building-image.jpg" layout="responsive" style="width:12rem;height:12rem" width="100" height="100" alt="건물 이미지"></amp-img>
                         </div>
-                        <div style="float: left" class="building-desc">
+                        <div class="building-desc">
                             <div>
-                                <p class="bold">고려 아카데미 텔</p>
-                                <p>서울시 마포구 아현동 437-3</p>
+                                <p class="bold" id="buildingName">고려 아카데미 텔</p>
+                                <p id="buildingAddress">서울시 마포구 아현동 437-3</p>
                             </div>
                             <div>
-                                <p>17층</p>
-                                <p>675세대</p>
-                                <p>1987.11</p>
+                                <p id="buildingFloor">17층</p>
+                                <p id="buildingRooms">675세대</p>
+                                <p id="buildingEstablish">1987.11</p>
                             </div>
                         </div>
                     </div>
@@ -115,10 +161,10 @@
 
                         </div>
                         <div class="map-button clear-fix">
-                            <button class="map-view-btn">
+                            <button class="btn-map-view">
                                 지도보기
                             </button>
-                            <button class="load-view-btn">
+                            <button class="btn-load-view">
                                 로드뷰보기
                             </button>
                         </div>
@@ -157,6 +203,27 @@
                 </section>
             </div>
         </div>
+        <footer id="footer">
+            <div class="footer-inner-wrap">
+                <div class="sub-agency-info">
+                    <ul class="">
+                        <li>우정공인중개사(김성훈)</li>
+                        <li><span class="bold">중개보조원(한유진팀장)</span></li>
+                        <li><span class="point">010-5228-7825</span><span style="display:none;">중개</span></li>
+
+                        <!--<li>a</li>-->
+                        <!--<li>b</li>-->
+                        <!--<li>c</li>-->
+                    </ul>
+                </div>
+                <div class="call-btn-wrap">
+                    <button class="call-btn">d</button>
+                </div>
+            </div>
+        </footer>
     </div>
+    <!--<script custom-element="amp-iframe" src="//apis.daum.net/maps/maps3.js?apikey=9a73e42f1b487663987c5cdb85d1d4c7"></script>-->
+    <script custom-element="amp-iframe" src="//apis.daum.net/maps/maps3.js?apikey=9a73e42f1b487663987c5cdb85d1d4c7&libraries=services,drawing"></script>
+    <script custom-element="amp-iframe" src="index.js"></script>
 </body>
 </html>
