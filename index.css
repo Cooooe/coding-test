@@ -102,14 +102,24 @@ button{
     color:black;
 }
 
-.image-slider{
-    overflow: hidden;
-    height:36rem;
+.image-wrapper{
+    /*overflow: hidden;*/
+    /*height:36rem;*/
+    width:100%;
+    margin-top:5.6rem;
 }
 
-.image-slider img {
-    width:100%;
+.image-slider{
     height:100%;
+    width:400%;
+}
+
+.image-slider amp-img{
+    max-width:25%;
+    min-width:25%;
+    width:25%;
+    height:100%;
+    float:left;
 }
 
 .room-manager-level {
@@ -348,6 +358,7 @@ span.point{
     font-size:0;
     background:white;
     border-top: 2px solid rgb(213,213,213);
+    z-index:100;
 }
 
 #footer>.footer-inner-wrap{
@@ -408,4 +419,18 @@ sup{
     font-size:smaller;
 }
 
+.amp-carousel-slide>.-amp-replaced-content, .amp-carousel-slide>.i-amphtml-replaced-content {
+    -o-object-fit: initial;
+    object-fit: initial;
+}
+
+.lightbox {
+    background: rgba(0,0,0,0.8);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.lightbox h1 {
+    color: white;
+}
 

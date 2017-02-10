@@ -92,7 +92,8 @@ var $map = (function(daum) {
 
 		var options = { //지도를 생성할 때 필요한 기본 옵션
 			center: new daum.maps.LatLng(lat, lng), //지도의 중심좌표.
-			level: 3 //지도의 레벨(확대, 축소 정도)
+			level: 3, //지도의 레벨(확대, 축소 정도),
+			draggable: false
 		};
 
 		_map = new daum.maps.Map(mapContainer, options); //지도 생성 및 객체 리턴
@@ -114,7 +115,7 @@ var $map = (function(daum) {
 			}
 		};
 
-		debugger;
+		// debugger;
 
 		geocoder.addr2coord(address, _callback);
 	};
@@ -164,7 +165,22 @@ var initialize = (function($http, daum) {
 	};
 
 	var setEvent = function() {
+		var callBtn = document.querySelector('#callBtn'),
+			roomImg = document.querySelectorAll('#imageContainer amp-img'),
+			roomImgCount = roomImg.length;
 
+		// 전화걸기 Event
+		callBtn.addEventListener('click', function() {
+			var callNumber = document.querySelector('#callNumberView').textContent;
+			callNumber = callNumber.replace(/[\-]/gi, '');
+			window.location.href="tel://"+callNumber;
+		});
+
+		for ( var i = 0; i < roomImgCount; i ++ ) {
+			roomImg[i].addEventListener('click', function() {
+				// alert('a');
+			});
+		}
 	};
 
 	var getBuildingData = function() {

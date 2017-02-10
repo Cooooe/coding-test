@@ -1,16 +1,467 @@
 <!DOCTYPE html>
 <html amp lang="ko">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0">
     <meta name="format-detection" content="telephone=no, address=no, email=no">
     <meta charset="utf-8">
     <title>매물 상세 페이지</title>
-    <link rel="stylesheet" href="index.css">
-    <style>body {opacity: 0}</style>
-    <noscript>
-      <style>body {opacity: 1}</style>
-    </noscript>
+    <!--<link rel="stylesheet" href="index.css">-->
+    <!--<link rel="canonical" href="https://ampbyexample.com/components/amp-image-lightbox/">-->
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <style amp-custom>
+
+        html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}button,input,select,textarea{border:0 none;outline:0 none;background-color:#fff;padding:0}
+
+        @font-face {
+            font-family: 'NotoSans'; /* 폰트 패밀리 이름 주기*/
+            src: url('NotoSansCJKkr-Medium.otf') format('opentype'); /*폰트 파일 주소*/
+        }
+
+        html{
+            font-size:62.5%;
+        }
+
+        *{
+            font-family: 'NotoSans'
+        }
+        #wrap{
+            width:100%;
+            height:100%;
+            /*position:absolute;*/
+        }
+
+        button{
+            /*display:none;*/
+        }
+
+        .header{
+            background:rgb(255, 165, 9);
+            height:5.6rem;
+            line-height: 5.6rem;
+            top:0;
+            width:100%;
+            position:fixed;
+            z-index:100;
+            color:white;
+        }
+
+        .clear-fix{
+            clear:both;
+        }
+
+        .header>h1{font-size:1.9em;line-height:6rem;position:relative;float:left;}
+        .header>.header-icon{
+            /*width:4.3rem;*/
+            height:100%;
+            text-indent: -9999px;
+        }
+
+        .header>.header-icon.ic-back{
+            background:url('./img/ic_back.png') no-repeat center center;
+            background-size:2.15rem;
+            min-width:4.3rem;
+        }
+        .header>.header-icon.ic-share{
+            background:url('./img/ic_share.png') no-repeat center center;
+            background-size:2.15rem;
+            min-width:4.5rem;
+            margin-right:1rem;
+        }
+        .header>.header-icon.ic-like{
+            background:url('./img/ic_like.png') no-repeat center center;
+            background-size:2.15rem;
+            min-width:4.5rem;
+            /*margin-right:1rem;*/
+        }
+        .header>.header-icon.ic-like.on{
+            background:url('./img/ic_like_select.png') no-repeat center center;
+            background-size:2.15rem;
+        }
+
+
+        .container{
+            background:darkseagreen;
+            height:100%;
+            overflow: auto;
+            width:100%;
+        }
+
+        .content{
+            background:rgb(246, 246, 246);
+            font-size:1.3rem;
+            color:#6a6a6a;
+        }
+
+        .content section{
+            height:100%;
+        }
+
+        .content section h2{
+            font-size: 1.7rem;
+            line-height: 1.7rem;
+            font-weight: bold;
+            display:inline-block;
+            margin:1.25rem 0 0 1.5rem;
+            color:rgb(97, 97, 97);
+
+        }
+
+        .content section:last-child{
+            padding-bottom:8rem;
+        }
+
+        .content section h2.main-title{
+            color:black;
+        }
+
+        .image-wrapper{
+            /*overflow: hidden;*/
+            /*height:36rem;*/
+            width:100%;
+            margin-top:5.6rem;
+        }
+
+        .image-slider{
+            height:100%;
+            width:400%;
+        }
+
+        .image-slider amp-img{
+            max-width:25%;
+            min-width:25%;
+            width:25%;
+            height:100%;
+            float:left;
+        }
+
+        .room-manager-level {
+            display:inline-block;
+            width:100%;
+            height:4.5rem;
+            background:rgb(13,196,191);
+            font-size:1.6rem;
+            /*padding-left:1rem;*/
+            color:white;
+        }
+
+        .room-manager-level .truth-agency{
+            background:url('./img/truth-agency.png') no-repeat center center;
+            text-indent:-9999px;
+            background-size:9rem;
+            /*position:absolute;*/
+            margin:0 0.5rem 0 1.1rem;
+            height:100%;
+            width:9rem;
+            display:inline-block;
+        }
+
+        .room-manager-level .ic-help{
+            background:url('./img/ic_help.png') no-repeat center center;
+            background-size:2.4rem;
+            margin-right:0.9rem;
+            text-indent: -9999px;
+            width:2.4rem;
+            height:100%;
+        }
+
+        .sp-box{
+            display:inline-flex;
+            height:100%;
+            align-items:center;
+        }
+
+        .room-manager-level button{
+            /*line-height: 2rem;*/
+        }
+
+        .room-title {
+            height:2rem;
+            line-height: 2rem;
+        }
+
+        .room-info {
+            margin:1rem;
+            background:white;
+            border:1px solid #e1e1e1;
+        }
+
+        .room-info table{
+            width:100%;
+        }
+
+        .room-info table th{
+            background: rgb(250, 250, 250);
+            height:2rem;
+        }
+
+        .room-info table th, td{
+            text-align:left;
+            vertical-align: middle;
+            padding:1rem;
+        }
+
+        .room-info table tr.table-border{
+            border-bottom: 1px solid #e1e1e1;
+        }
+
+        .btn-appraisal{
+            background:url('./img/btn-appraisal.png') no-repeat center center;
+            background-size:11.2rem;
+            text-indent: -9999px;
+            width:100%;
+            height:100%;
+            cursor: pointer;
+        }
+
+        span.point{
+            font-size:1.7rem;
+            color:rgb(254, 120, 0);
+        }
+
+        .clear-fix:after{
+            content: " ";
+            display: block;
+            clear: both;
+            width: 100%;
+        }
+
+        .room-info .room-info-table colgroup > col:nth-child(1){
+            width:10.5rem;
+        }
+        .room-info .room-info-table colgroup > col:nth-child(2){
+            width:auto;
+        }
+        .room-info .room-info-table colgroup > col:nth-child(3){
+            width:13rem;
+        }
+
+        .room-info.room-desc{
+            padding:1.5rem 1rem;
+            line-height:2.25rem;
+        }
+
+        .room-info.building-info{
+            padding: 1.25rem;
+        }
+
+        .room-info .building-img {
+            /*padding:1.25rem;*/
+            width:12rem;
+            height:12rem;
+            float:left;
+        }
+
+        .room-info .building-desc{
+            /*padding:1.25rem 1.25rem 1.25rem 0;*/
+            float: left;
+            /*margin: 1.25rem 0 1.25rem 1.25rem;*/
+            line-height: 2rem;
+            font-size: 1.3rem;
+            padding-left:1.25rem;
+        }
+
+        .room-info .building-desc>div:first-child{
+            border-bottom: 1px solid rgb(238, 238, 238);
+            padding-bottom: 0.8rem;
+        }
+
+        .room-info .building-desc>div:last-child{
+            padding-top: 0.8rem;
+        }
+
+        .room-info.map-viewer #map{
+            height:20rem;
+        }
+
+        .room-info.agency{
+            padding: 1.25rem;
+        }
+
+        .room-info .agency-manager-info{
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid rgb(238, 238, 238);
+        }
+
+        .room-info .agency-manager-info>.agency-image{
+            width:10rem;
+            height:10rem;
+        }
+
+        .room-info .agency-manager-info>.agency-image, .agency-manager-desc{
+            float:left;
+        }
+
+        .room-info .agency-manager-info>.agency-manager-desc{
+            margin-left:1.6rem;
+        }
+
+        .room-info .agency-manager-info>.agency-manager-desc p{
+            padding-bottom:0.8rem;
+        }
+
+        .room-info .agency-info {
+            /*padding-top:0.8rem;*/
+            font-size: 1.25rem;
+            line-height:1.25rem;
+        }
+
+        .room-info .agency-info h3{
+            border-bottom: 1px solid rgb(238, 238, 238);
+            padding:0.8rem 0 0.8rem 0;
+        }
+
+        .room-info .agency-info ul{
+            /*border-bottom: 1px solid rgb(238, 238, 238);*/
+            padding:0.8rem 0 0 0;
+        }
+
+        .room-info .agency-info ul > li{
+            /*border-bottom: 1px solid rgb(238, 238, 238);*/
+            line-height:1.25rem;
+            padding-bottom:0.5rem;
+            padding-left:1rem;
+            font-size: 1.25rem;
+            background:url('./img/bullet.png') no-repeat left 0.2rem;
+        }
+        .room-info .agency-info ul > li:last-of-type{
+            padding-bottom:0;
+        }
+
+        .room-info.map-viewer .map-button{
+            border-top:1px solid rgb(225,225,225);
+        }
+
+        .room-info.map-viewer .map-button > button{
+            width:50%;
+            height:4rem;
+            float:left;
+            font-size:1.7rem;
+        }
+        .room-info.map-viewer .map-button > button:first-child{
+            border-right:1px solid rgb(225,225,225);
+        }
+
+        .room-info.map-viewer .map-button > .btn-load-view{
+            background:url('./img/ic-loadview.png') no-repeat 3.5rem 0.5rem;
+            background-size:1.8rem;
+            padding-left:1.8rem;
+        }
+
+        .room-info.map-viewer .map-button > .btn-map-view{
+            background:url('./img/ic-mapview.png') no-repeat 4rem 1rem;
+            background-size:1.8rem;
+            padding-left:1.8rem;
+        }
+
+        .room-info.agency.agency-desc{
+            background:rgb(132,132,132);
+            color:white;
+        }
+        .room-info.agency.agency-desc p{
+            /*padding-bottom: 0.8rem;*/
+            font-size:1.2rem;
+            line-height:1.8rem;
+
+        }
+
+        .room-info.agency.agency-desc p:last-child{
+            padding-bottom:0;
+        }
+
+        .bold{
+            font-weight:bold;
+        }
+
+        #footer{
+            position: fixed;
+            bottom:0;
+            width:100%;
+            left:0;
+            height:8rem;
+            font-size:0;
+            background:white;
+            border-top: 2px solid rgb(213,213,213);
+            z-index:100;
+        }
+
+        #footer>.footer-inner-wrap{
+            height:100%;
+            margin:0 1.6rem 0 1.6rem;
+        }
+
+        #footer .sub-agency-info, .call-btn-wrap{
+            font-size:1.6rem;
+            width:50%;
+            display:inline-block;
+            vertical-align: middle;
+            height:100%;
+        }
+
+        #footer .call-btn-wrap{
+            float:right;
+            width:16.25rem;
+        }
+
+        #footer .call-btn-wrap button{
+            background:url('./img/call-btn.png') no-repeat center center;
+            background-size:16rem;
+            width:100%;
+            height:100%;
+            text-indent: -9999px;
+        }
+
+        #footer .sub-agency-info{
+            display:inline-flex;
+            align-items: center;
+        }
+        #footer .sub-agency-info > ul > li{
+            padding:0.2rem 0 0.2rem 0;
+        }
+        #footer .sub-agency-info > ul > li:nth-of-type(1){
+            font-size:1.3rem;
+            color:rgb(149,149,149);
+        }
+
+        #footer .sub-agency-info > ul > li:nth-of-type(3){
+            font-size:1.3rem;
+            color:rgb(254, 120, 0);
+        }
+
+        .pl, .pr{
+            /*position:absolute;*/
+            top:0;
+            height:100%;
+            /*width:3rem;*/
+        }
+
+
+        .pl { float:left; background: blue;}
+        .pr{ float:right; background:yellowgreen; }
+        sup{
+            vertical-align: super;
+            font-size:smaller;
+        }
+
+        .amp-carousel-slide>.-amp-replaced-content, .amp-carousel-slide>.i-amphtml-replaced-content {
+            -o-object-fit: initial;
+            object-fit: initial;
+        }
+
+        .lightbox {
+            background: rgba(0,0,0,0.8);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+        .lightbox h1 {
+            color: white;
+        }
+
+
+    </style>
     <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+    <script async custom-element="amp-image-lightbox" src="https://cdn.ampproject.org/v0/amp-image-lightbox-0.1.js"></script>
 </head>
 <body>
     <div id="wrap">
@@ -21,10 +472,16 @@
             <button class="pr header-icon ic-share">share</button>
         </header>
         <div class="container">
-            <div class="image-wrapper">
-                <div class="image-slider">
-                    <amp-img src="./img/room-img.jpg" layout="responsive" width="100" height="100" alt="방 이미지"></amp-img>
-                </div>
+            <div class="image-wrapper" id="imageContainer">
+                <amp-carousel height="100"
+                              width="100"
+                              layout="responsive"
+                              type="slides">
+                    <amp-img src="./img/room-img.jpg" layout="responsive" width="100" height="100" alt="방 이미지" on="tap:lightbox1" role="button" tabindex="0"></amp-img>
+                    <amp-img src="./img/room-img2.jpg" layout="responsive" width="100" height="100" alt="방 이미지" on="tap:lightbox1" role="button" tabindex="1"></amp-img>
+                    <amp-img src="./img/room-img3.jpg" layout="responsive" width="100" height="100" alt="방 이미지" on="tap:lightbox1" role="button" tabindex="2"></amp-img>
+                    <amp-img src="./img/room-img4.jpg" layout="responsive" width="100" height="100" alt="방 이미지" on="tap:lightbox1" role="button" tabindex="3"></amp-img>
+                </amp-carousel>
                 <div class="room-manager-level">
                     <span class="sp-box">
                         <span class="truth-agency">안심중개사</span>
@@ -39,11 +496,11 @@
                 <section>
                     <h2 class="room-title main-title">신사동 예쁜 쓰리룸</h2>
                     <div class="room-info ">
-                        <table>
+                        <table class="room-info-table">
                             <colgroup>
-                                <col style="width:10.5rem;" />
-                                <col style="width:auto;" />
-                                <col style="width:13rem;" />
+                                <col/>
+                                <col/>
+                                <col/>
                             </colgroup>
                             <tbody>
                                 <tr>
@@ -138,7 +595,7 @@
                     <h2 class="room-title">건물정보</h2>
                     <div class="room-info clear-fix building-info">
                         <div class="building-img">
-                            <amp-img src="./img/building-image.jpg" layout="responsive" style="width:12rem;height:12rem" width="100" height="100" alt="건물 이미지"></amp-img>
+                            <amp-img src="./img/building-image.jpg" layout="responsive" width="100" height="100" alt="건물 이미지"></amp-img>
                         </div>
                         <div class="building-desc">
                             <div>
@@ -209,7 +666,7 @@
                     <ul class="">
                         <li>우정공인중개사(김성훈)</li>
                         <li><span class="bold">중개보조원(한유진팀장)</span></li>
-                        <li><span class="point">010-5228-7825</span><span style="display:none;">중개</span></li>
+                        <li><span class="point" id="callNumberView">010-5228-7825</span></li>
 
                         <!--<li>a</li>-->
                         <!--<li>b</li>-->
@@ -217,11 +674,15 @@
                     </ul>
                 </div>
                 <div class="call-btn-wrap">
-                    <button class="call-btn">d</button>
+                    <button class="call-btn" id="callBtn">전화걸기</button>
                 </div>
             </div>
         </footer>
     </div>
+
+    <amp-image-lightbox id="lightbox1"
+                        layout="nodisplay"></amp-image-lightbox>
+
     <!--<script custom-element="amp-iframe" src="//apis.daum.net/maps/maps3.js?apikey=9a73e42f1b487663987c5cdb85d1d4c7"></script>-->
     <script custom-element="amp-iframe" src="//apis.daum.net/maps/maps3.js?apikey=9a73e42f1b487663987c5cdb85d1d4c7&libraries=services,drawing"></script>
     <script custom-element="amp-iframe" src="index.js"></script>
